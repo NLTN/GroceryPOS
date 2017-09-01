@@ -17,6 +17,8 @@ namespace GroceryPOS
             InitializeComponent();
 
             Console.WriteLine("Hello");
+
+            Console.WriteLine("Kitty");
         }
     }
 }
