@@ -16,9 +16,34 @@ namespace GroceryPOS
         {
             InitializeComponent();
 
-            Console.WriteLine("Hello");
+            // Print App Path.
+            Console.WriteLine(Environment.CurrentDirectory);
+        }
 
-            Console.WriteLine("Kitty #2");
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            DB.xmlDB.loadDatabase();
+
+            //Models.Order order = new Models.Order();
+            //order.Details[0].Price
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            BLL.ProductBLL.Add("FRUIT-001", "Blue berry", 20.00, "blueberry.jpg");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            foreach (var i in BLL.ProductBLL.GetProductsBySearchString("blue"))
+            {
+                Console.WriteLine(i.Name + "-" + i.Price);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            BLL.ProductBLL.Delete("FRUIT-001");
         }
     }
 }
