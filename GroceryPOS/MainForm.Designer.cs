@@ -36,6 +36,19 @@
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.txtProductID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.picPhoto = new System.Windows.Forms.PictureBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.txtSearchBox = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // listView1
@@ -74,17 +87,18 @@
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(53, 256);
+            this.btnAddProduct.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btnAddProduct.Location = new System.Drawing.Point(10, 193);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(109, 23);
+            this.btnAddProduct.Size = new System.Drawing.Size(232, 23);
             this.btnAddProduct.TabIndex = 2;
-            this.btnAddProduct.Text = "Add a Product";
-            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Text = "Add";
+            this.btnAddProduct.UseVisualStyleBackColor = false;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(377, 256);
+            this.btnSearch.Location = new System.Drawing.Point(433, 254);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 3;
@@ -94,7 +108,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(377, 286);
+            this.btnDelete.Location = new System.Drawing.Point(393, 401);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 4;
@@ -102,19 +116,128 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnBrowse);
+            this.groupBox1.Controls.Add(this.picPhoto);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtPrice);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtProductID);
+            this.groupBox1.Controls.Add(this.txtProductName);
+            this.groupBox1.Controls.Add(this.btnAddProduct);
+            this.groupBox1.Location = new System.Drawing.Point(53, 256);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(249, 222);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "New Product";
+            // 
+            // txtProductName
+            // 
+            this.txtProductName.Location = new System.Drawing.Point(10, 75);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(232, 20);
+            this.txtProductName.TabIndex = 3;
+            this.txtProductName.Text = "Apple";
+            // 
+            // txtProductID
+            // 
+            this.txtProductID.Location = new System.Drawing.Point(10, 36);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.Size = new System.Drawing.Size(100, 20);
+            this.txtProductID.TabIndex = 4;
+            this.txtProductID.Text = "FRUIT-002";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Product ID";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(139, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Price";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(142, 36);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(100, 20);
+            this.txtPrice.TabIndex = 7;
+            this.txtPrice.Text = "$20.00";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Picture";
+            // 
+            // picPhoto
+            // 
+            this.picPhoto.Location = new System.Drawing.Point(10, 115);
+            this.picPhoto.Name = "picPhoto";
+            this.picPhoto.Size = new System.Drawing.Size(113, 72);
+            this.picPhoto.TabIndex = 11;
+            this.picPhoto.TabStop = false;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(129, 164);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(113, 23);
+            this.btnBrowse.TabIndex = 12;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            // 
+            // txtSearchBox
+            // 
+            this.txtSearchBox.Location = new System.Drawing.Point(327, 256);
+            this.txtSearchBox.Name = "txtSearchBox";
+            this.txtSearchBox.Size = new System.Drawing.Size(100, 20);
+            this.txtSearchBox.TabIndex = 6;
+            this.txtSearchBox.Text = "Apple";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 490);
+            this.Controls.Add(this.txtSearchBox);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.listView1);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -127,6 +250,17 @@
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.PictureBox picPhoto;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtProductID;
+        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.TextBox txtSearchBox;
     }
 }
 

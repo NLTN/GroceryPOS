@@ -30,12 +30,12 @@ namespace GroceryPOS
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            BLL.ProductBLL.Add("FRUIT-001", "Blue berry", 20.00, "blueberry.jpg");
+            BLL.ProductBLL.Add(txtProductID.Text, txtProductName.Text, 20.00, "blueberry.jpg");
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            foreach (var i in BLL.ProductBLL.GetProductsBySearchString("blue"))
+            foreach (var i in BLL.ProductBLL.GetProductsBySearchString(txtSearchBox.Text))
             {
                 Console.WriteLine(i.Name + "-" + i.Price);
             }
