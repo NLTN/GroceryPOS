@@ -62,7 +62,7 @@ namespace GroceryPOS.DB
         {
             Console.WriteLine("DB path = " + dbPath);
             doc = XDocument.Load(dbPath);
-            Console.WriteLine("Number of elements: " + doc.Element("products").Elements().Count());
+            //Console.WriteLine("Number of elements: " + doc.Element("products").Elements().Count());
         }
 
         /// <summary>
