@@ -85,6 +85,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GroceryPOS.Data\GroceryPOS.Data.csproj">
+      <Project>{4266fa86-49ab-409d-8fce-fe4f5669372a}</Project>
+      <Name>GroceryPOS.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
