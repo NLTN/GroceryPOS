@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+using GroceryPOS.Data.DB;
+using GroceryPOS.Data.BLL;
+
+
 namespace GroceryPOS
 {
     public partial class MainForm : Form
@@ -22,7 +27,8 @@ namespace GroceryPOS
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DB.xmlDB.loadDatabase();
+
+            xmlDB.loadDatabase();
 
             //Models.Order order = new Models.Order();
             //order.Details[0].Price
@@ -30,12 +36,12 @@ namespace GroceryPOS
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            BLL.ProductBLL.Add(txtProductID.Text, txtProductName.Text, 20.00, "blueberry.jpg");
+            ProductBLL.Add(txtProductID.Text, txtProductName.Text, 20.00, "blueberry.jpg");
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            foreach (var i in BLL.ProductBLL.GetProductsBySearchString(txtSearchBox.Text))
+            foreach (var i in ProductBLL.GetProductsBySearchString(txtSearchBox.Text))
             {
                 Console.WriteLine(i.Name + "-" + i.Price);
             }
@@ -43,7 +49,7 @@ namespace GroceryPOS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            BLL.ProductBLL.Delete("FRUIT-001");
+            ProductBLL.Delete("FRUIT-001");
         }
     }
 }
