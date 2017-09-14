@@ -23,42 +23,43 @@ using System.Xml.Linq;
 
 namespace GroceryPOS.Data.DB
 {
-    public class xmlDB
+    // Singleton xmlDB Class
+    public sealed class xmlDB
     {
-        #region Constructor - Singleton
-        private static xmlDB _instance;
+        private static volatile xmlDB instance;
+        private static object syncRoot = new Object();
 
-        private xmlDB() { loadDatabase(); }
+        private xmlDB() { Reload(); }
 
         public static xmlDB Instance
         {
             get
             {
-                if (_instance == null)
+                if (instance == null)
                 {
-                    _instance = new xmlDB();
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                            instance = new xmlDB();
+                    }
                 }
-                return _instance;
+
+                return instance;
             }
         }
-        #endregion
+
 
         #region Public Variables
-        public static XDocument doc;
+        public XDocument doc;
+        public static string dbPath = Environment.CurrentDirectory + "/db.xml";
         #endregion
 
-        #region Private Variables
-        /// <summary>
-        /// Database Path
-        /// </summary>
-        public static string dbPath = Environment.CurrentDirectory + "\\db.xml";
-        #endregion
 
-        #region Private Functions
+        #region Public Functions
         /// <summary>
         /// Load XML file
         /// </summary>
-        public static void loadDatabase()
+        public void Reload()
         {
             Console.WriteLine("DB path = " + dbPath);
             doc = XDocument.Load(dbPath);
@@ -68,7 +69,7 @@ namespace GroceryPOS.Data.DB
         /// <summary>
         /// Save to XML file
         /// </summary>
-        public static void SaveChanges()
+        public void SaveChanges()
         {
             doc.Save(dbPath);
         }

@@ -47,8 +47,11 @@ namespace GroceryPOS.Data.DAL
         /// <returns>A list of product, type of <Models.Product></returns>
         public IEnumerable<Models.Product> GetProductByID(string id)
         {
+            // Get xmlDB Instance
+            var xmlDBInstance = DB.xmlDB.Instance;
+
             // Query
-            IEnumerable<Models.Product> items = from i in DB.xmlDB.doc.Element("products").Elements("product")
+            IEnumerable<Models.Product> items = from i in xmlDBInstance.doc.Element("products").Elements("product")
                                                 where (string)i.Element("ID") == id
                                                 select new Models.Product()
                                                 {
@@ -72,8 +75,11 @@ namespace GroceryPOS.Data.DAL
         /// <returns></returns>
         public IEnumerable<Models.Product> GetProductsBySearchString(string text)
         {
+            // Get xmlDB Instance
+            var xmlDBInstance = DB.xmlDB.Instance;
+
             // Query
-            IEnumerable<Models.Product> items = from i in DB.xmlDB.doc.Element("products").Elements("product")
+            IEnumerable<Models.Product> items = from i in xmlDBInstance.doc.Element("products").Elements("product")
                                                 where i.Element("Name").Value.ToLower().Contains(text.ToLower())
                                                 select new Models.Product()
                                                 {
@@ -111,11 +117,14 @@ namespace GroceryPOS.Data.DAL
             product.Add(new XElement("Price", price));
             product.Add(new XElement("ImagePath", imgagePath));
 
+            // Get xmlDB Instance
+            var xmlDBInstance = DB.xmlDB.Instance;
+
             // Add the Element to the node
-            DB.xmlDB.doc.Element("products").Add(product);
+            xmlDBInstance.doc.Element("products").Add(product);
 
             // Save
-            DB.xmlDB.SaveChanges();
+            xmlDBInstance.SaveChanges();
         }
 
         /// <summary>
@@ -125,7 +134,10 @@ namespace GroceryPOS.Data.DAL
         /// <param name="id">Product ID</param>
         public void Delete(string id)
         {
-            var items = DB.xmlDB.doc.Element("products").Elements("product").Where(i => (string)i.Element("ID") == id);
+            // Get xmlDB Instance
+            var xmlDBInstance = DB.xmlDB.Instance;
+
+            var items = xmlDBInstance.doc.Element("products").Elements("product").Where(i => (string)i.Element("ID") == id);
 
             int count = items.Count();
 
@@ -136,7 +148,7 @@ namespace GroceryPOS.Data.DAL
 
 
                 // Save
-                DB.xmlDB.SaveChanges();
+                xmlDBInstance.SaveChanges();
             }
 
             // Debug
