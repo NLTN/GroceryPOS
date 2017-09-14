@@ -28,10 +28,6 @@ namespace GroceryPOS
         private void MainForm_Load(object sender, EventArgs e)
         {
 
-            xmlDB.loadDatabase();
-
-            //Models.Order order = new Models.Order();
-            //order.Details[0].Price
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
