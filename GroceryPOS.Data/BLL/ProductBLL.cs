@@ -112,7 +112,6 @@ namespace GroceryPOS.Data.BLL
                             Directory.CreateDirectory(StorageDirectory);
                         }
 
-                        // Checking for duplication
                         // Check if there is a file with the same filename already exists in StorageDirectory                        
                         if (File.Exists(StorageDirectory + "/" + Path.GetFileName(imagePath))) {
                             // If so, add a random string to the end of the filename.
