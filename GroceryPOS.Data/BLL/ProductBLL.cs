@@ -31,7 +31,7 @@ namespace GroceryPOS.Data.BLL
     public class ProductBLL
     {
         #region Private Fields
-        private static string DefaultImageDirectory = System.Environment.CurrentDirectory + "/Images";
+        private static string StorageDirectory = System.Environment.CurrentDirectory + "/Storage";
         #endregion
 
         #region Get
@@ -91,31 +91,45 @@ namespace GroceryPOS.Data.BLL
         {
             try
             {
+                // The filename to be stored in StorageDirectory
+                string _filenameToBeStored = "";
+
                 // Auto generate an ProductID if the id is empty
                 if (id == string.Empty)
                 {
                     id = GenerateID();
                 }
 
-                // If the user want to add an image
+                // If the user wants to add an image
                 if (imagePath != string.Empty)
                 {
                     // Check if the file exists
                     if (File.Exists(imagePath))
                     {
-                        // Create an image directory if needed.
-                        if (!Directory.Exists(DefaultImageDirectory))
+                        // Create an StorageDirectory if needed.
+                        if (!Directory.Exists(StorageDirectory))
                         {
-                            Directory.CreateDirectory(DefaultImageDirectory);
+                            Directory.CreateDirectory(StorageDirectory);
                         }
 
-                        // Copy the file user selected to DefaultImageDirectory
-                        File.Copy(imagePath, DefaultImageDirectory + "/" + Path.GetFileName(imagePath));
+                        // Checking for duplication
+                        // Check if there is a file with the same filename already exists in StorageDirectory                        
+                        if (File.Exists(StorageDirectory + "/" + Path.GetFileName(imagePath))) {
+                            // If so, add a random string to the end of the filename.
+                            _filenameToBeStored = Path.GetFileNameWithoutExtension(imagePath) + GenerateID() + 
+                                Path.GetExtension(imagePath);                            
+                        } else {
+                            // Just use the same filename
+                            _filenameToBeStored = Path.GetFileName(imagePath);
+                        }
+
+                        // Copy the file user selected to StorageDirectory
+                        File.Copy(imagePath, StorageDirectory + "/" + _filenameToBeStored);
                     }
                 }
 
-                // Execute
-                new DAL.ProductDAL().Add(id, name, price, Path.GetFileName(imagePath));
+                // Execute ProductDAL.Add
+                new DAL.ProductDAL().Add(id, name, price, _filenameToBeStored);
             }
             catch (Exception e)
             {
