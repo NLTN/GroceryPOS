@@ -30,10 +30,6 @@ namespace GroceryPOS.Data.BLL
     /// </summary>
     public class ProductBLL
     {
-        #region Private Fields
-        private static string StorageDirectory = System.Environment.CurrentDirectory + "/Storage";
-        #endregion
-
         #region Get
         /// <summary>
         /// <para>Get a product by ID</para>
@@ -107,13 +103,13 @@ namespace GroceryPOS.Data.BLL
                     if (File.Exists(imagePath))
                     {
                         // Create an StorageDirectory if needed.
-                        if (!Directory.Exists(StorageDirectory))
+                        if (!Directory.Exists(Settings.StorageDirectory))
                         {
-                            Directory.CreateDirectory(StorageDirectory);
+                            Directory.CreateDirectory(Settings.StorageDirectory);
                         }
 
                         // Check if there is a file with the same filename already exists in StorageDirectory                        
-                        if (File.Exists(StorageDirectory + "/" + Path.GetFileName(imagePath))) {
+                        if (File.Exists(Settings.StorageDirectory + "/" + Path.GetFileName(imagePath))) {
                             // If so, add a random string to the end of the filename.
                             _filenameToBeStored = Path.GetFileNameWithoutExtension(imagePath) + GenerateID() + 
                                 Path.GetExtension(imagePath);                            
@@ -123,7 +119,7 @@ namespace GroceryPOS.Data.BLL
                         }
 
                         // Copy the file user selected to StorageDirectory
-                        File.Copy(imagePath, StorageDirectory + "/" + _filenameToBeStored);
+                        File.Copy(imagePath, Settings.StorageDirectory + "/" + _filenameToBeStored);
                     }
                 }
 
