@@ -39,7 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpProducts = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -166,12 +166,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Name";
             // 
-            // flowLayoutPanel1
+            // flpProducts
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 59);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(506, 402);
-            this.flowLayoutPanel1.TabIndex = 5;
+            this.flpProducts.Location = new System.Drawing.Point(9, 59);
+            this.flpProducts.Name = "flpProducts";
+            this.flpProducts.Size = new System.Drawing.Size(506, 402);
+            this.flpProducts.TabIndex = 5;
             // 
             // label5
             // 
@@ -188,7 +188,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnSearch);
             this.groupBox2.Controls.Add(this.txtSearch);
-            this.groupBox2.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox2.Controls.Add(this.flpProducts);
             this.groupBox2.Location = new System.Drawing.Point(370, 66);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(521, 467);
@@ -231,6 +231,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ProductSampleForm";
             this.Text = "ProductSampleForm";
+            this.Load += new System.EventHandler(this.ProductSampleForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxProductImage)).EndInit();
@@ -255,7 +256,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpProducts;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label6;

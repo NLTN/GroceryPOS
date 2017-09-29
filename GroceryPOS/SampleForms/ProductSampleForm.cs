@@ -21,6 +21,14 @@ namespace GroceryPOS.SampleForms
         }
         #endregion
 
+        #region Form Events
+        private void ProductSampleForm_Load(object sender, EventArgs e)
+        {
+            // Load Products from DB
+            LoadData();
+        }
+        #endregion
+
         #region Group Box - Add a Product 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -48,6 +56,14 @@ namespace GroceryPOS.SampleForms
 
         #region Group Box - Product List
 
+        #endregion
+
+        #region Product List Methods
+        void LoadData()
+        {
+            ProductUserControl uc = new ProductUserControl("123", "Tomato", 2.55, "32131");
+            flpProducts.Controls.Add(uc);
+        }
         #endregion
     }
 }
