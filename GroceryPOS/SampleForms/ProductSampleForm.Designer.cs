@@ -34,20 +34,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picBoxProductImage = new System.Windows.Forms.PictureBox();
             this.numPrice = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxProductImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrice)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +72,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnBrowse);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.picBoxProductImage);
             this.groupBox1.Controls.Add(this.numPrice);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtName);
@@ -114,17 +113,18 @@
             this.btnBrowse.TabIndex = 8;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
-            // pictureBox1
+            // picBoxProductImage
             // 
-            this.pictureBox1.Image = global::GroceryPOS.Properties.Resources.PhotoPlaceholder;
-            this.pictureBox1.InitialImage = global::GroceryPOS.Properties.Resources.PhotoPlaceholder;
-            this.pictureBox1.Location = new System.Drawing.Point(185, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(135, 106);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.picBoxProductImage.Image = global::GroceryPOS.Properties.Resources.PhotoPlaceholder;
+            this.picBoxProductImage.InitialImage = global::GroceryPOS.Properties.Resources.PhotoPlaceholder;
+            this.picBoxProductImage.Location = new System.Drawing.Point(185, 19);
+            this.picBoxProductImage.Name = "picBoxProductImage";
+            this.picBoxProductImage.Size = new System.Drawing.Size(135, 106);
+            this.picBoxProductImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBoxProductImage.TabIndex = 7;
+            this.picBoxProductImage.TabStop = false;
             // 
             // numPrice
             // 
@@ -233,7 +233,7 @@
             this.Text = "ProductSampleForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxProductImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrice)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -250,13 +250,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picBoxProductImage;
         private System.Windows.Forms.NumericUpDown numPrice;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label6;
