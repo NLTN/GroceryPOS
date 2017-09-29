@@ -9,7 +9,7 @@
 //  **                  Nguyen Nguyen                   **
 //  ******************************************************
 
-//  Models\Order.cs
+//  Models\OrderDetail.cs
 //  https://github.com/NLTN/GroceryPOS.git
 //  Version 0.0.1
 //  Created by Nguyen Nguyen on 9/1/2017.
@@ -20,13 +20,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GroceryPOS.Models
+namespace GroceryPOS.Data.Models
 {
-    public class Order
+    public class SaleItem
     {
-        public string OrderID { get; set; }
-        public DateTime Datetime { get; set; }
-
-        public OrderDetail[] Details { get; set; }
-    }   
+        
+        public int SortOrder { get; set; }
+        public string ProductID { get; set; }
+        public string ProductName { get; set; }
+        public decimal Price { get; set; }
+        public double Quantity { get; set; }
+    }
 }

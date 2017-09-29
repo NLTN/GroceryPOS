@@ -20,15 +20,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 namespace GroceryPOS.Data.DB
 {
     // Singleton xmlDB Class
     public sealed class xmlDB
     {
+        #region singleton class
         private static volatile xmlDB instance;
         private static object syncRoot = new Object();
-
+        
         private xmlDB() { Reload(); }
 
         public static xmlDB Instance
@@ -47,31 +49,81 @@ namespace GroceryPOS.Data.DB
                 return instance;
             }
         }
-
-
-        #region Public Variables
+        #endregion
+        
+        #region Public Fields
         public XDocument doc;
         public static string dbPath = Environment.CurrentDirectory + "/db.xml";
         #endregion
-
-
-        #region Public Functions
+        
+        #region Public Methods
         /// <summary>
         /// Load XML file
         /// </summary>
         public void Reload()
         {
-            Console.WriteLine("DB path = " + dbPath);
-            doc = XDocument.Load(dbPath);
-            //Console.WriteLine("Number of elements: " + doc.Element("products").Elements().Count());
+            // Checking if DB file exists
+            if (!DBExists()) {
+                // DB file doesn't exist.
+                // Create a new one.
+                CreateXmlFile();
+            } else {
+                // Print out DB Path
+                Console.WriteLine("DB path = " + dbPath);
+
+                // Reload XML file.
+                doc = XDocument.Load(dbPath);
+            }
         }
 
         /// <summary>
-        /// Save to XML file
+        /// Save changes to XML file
         /// </summary>
         public void SaveChanges()
         {
+            // Save
             doc.Save(dbPath);
+        }
+        #endregion
+
+        #region Private Methods
+        private bool DBExists() {
+            try {
+                // Debug Output
+                Debug.WriteLine("DB exists = {0}", System.IO.File.Exists(dbPath));
+
+                // Return True/False. It depends on if DB exists or not.
+                return System.IO.File.Exists(dbPath);
+            } catch (Exception e) {
+                // Debug Output
+                Debug.WriteLine(e.Message);
+
+                // Return false because there is an error
+                return false;
+            }
+        }
+        private bool CreateXmlFile() {
+            try {
+                // Create an XML document and save to file
+                new XDocument(
+                    new XElement("root", 
+                        new XElement("products"), new XElement("sales")  
+                    )
+                )
+                .Save(dbPath);
+
+                // Debug Output
+                Debug.WriteLine("DB file has been created - {0}", dbPath);
+
+                // Return success
+                return true;
+            } catch (Exception e) {
+                // Print out error
+                Debug.WriteLine(e.Message);
+
+                // Return false because there is an error.
+                return false;
+            }
         }
         #endregion
     }

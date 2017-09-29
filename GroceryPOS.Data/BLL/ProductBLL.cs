@@ -82,9 +82,9 @@ namespace GroceryPOS.Data.BLL
         /// <param name="name">Product name</param>
         /// <param name="price">The price</param>
         /// <param name="imgPath">Image path</param>
-        public static void Add(string id, string name, double price, string imgagePath)
+        public static void Add(string id, string name, double price, string imagePath)
         {
-            new DAL.ProductDAL().Add(id, name, price, imgagePath);
+            new DAL.ProductDAL().Add(id, name, price, imagePath);
         }
 
         /// <summary>
@@ -95,6 +95,12 @@ namespace GroceryPOS.Data.BLL
         public static void Delete(string id)
         {
             new DAL.ProductDAL().Delete(id);
+        }
+        #endregion
+
+        #region Others
+        public static string GenerateID() {
+            return DateTime.UtcNow.ToBinary().ToString();
         }
         #endregion
     }

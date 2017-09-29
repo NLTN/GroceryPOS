@@ -31,6 +31,13 @@ namespace GroceryPOS.Data.DAL
     /// </summary>
     public class ProductDAL
     {
+        #region Private Fields - XML Element Name
+        const string _nameXName = "name";
+        const string _idXName = "id";
+        const string _priceXName = "price";
+        const string _imageXName = "image";
+        #endregion
+
         #region Constructors
         public ProductDAL()
         {
@@ -51,14 +58,14 @@ namespace GroceryPOS.Data.DAL
             var xmlDBInstance = DB.xmlDB.Instance;
 
             // Query
-            IEnumerable<Models.Product> items = from i in xmlDBInstance.doc.Element("products").Elements("product")
+            IEnumerable<Models.Product> items = from i in xmlDBInstance.doc.Root.Element("products").Elements("product")
                                                 where (string)i.Element("ID") == id
                                                 select new Models.Product()
                                                 {
-                                                    ProductID = i.Element("ID").Value,
-                                                    Name = i.Element("Name").Value,
-                                                    Price = Double.Parse(i.Element("Price").Value),
-                                                    ImagePath = i.Element("ImagePath").Value
+                                                    ProductID = i.Attribute(_idXName).Value,
+                                                    Name = i.Element(_nameXName).Value,
+                                                    Price = Double.Parse(i.Element(_priceXName).Value),
+                                                    ImagePath = i.Element(_imageXName).Value
                                                 };
             // Debug
             Debug.WriteLine("Number of items found: {0}", items.Count());
@@ -79,14 +86,14 @@ namespace GroceryPOS.Data.DAL
             var xmlDBInstance = DB.xmlDB.Instance;
 
             // Query
-            IEnumerable<Models.Product> items = from i in xmlDBInstance.doc.Element("products").Elements("product")
-                                                where i.Element("Name").Value.ToLower().Contains(text.ToLower())
+            IEnumerable<Models.Product> items = from i in xmlDBInstance.doc.Root.Element("products").Elements("product")
+                                                where i.Element(_nameXName).Value.ToLower().Contains(text.ToLower())
                                                 select new Models.Product()
                                                 {
-                                                    ProductID = i.Element("ID").Value,
-                                                    Name = i.Element("Name").Value,
-                                                    Price = Double.Parse(i.Element("Price").Value),
-                                                    ImagePath = i.Element("ImagePath").Value
+                                                    ProductID = i.Attribute(_idXName).Value,
+                                                    Name = i.Element(_nameXName).Value,
+                                                    Price = Double.Parse(i.Element(_priceXName).Value),
+                                                    ImagePath = i.Element(_imageXName).Value
                                                 };
 
             // Debug
@@ -106,22 +113,24 @@ namespace GroceryPOS.Data.DAL
         /// <param name="name">Product name</param>
         /// <param name="price">The price</param>
         /// <param name="imgPath">Image path</param>
-        public void Add(string id, string name, double price, string imgagePath)
+        public void Add(string id, string name, double price, string imagePath)
         {
             // Create a new Element
             XElement product = new XElement("product");
 
+            // Add an attribute.
+            product.SetAttributeValue(_idXName, id);
+
             // Create and add sub elements
-            product.Add(new XElement("ID", id));
-            product.Add(new XElement("Name", name));
-            product.Add(new XElement("Price", price));
-            product.Add(new XElement("ImagePath", imgagePath));
+            product.Add(new XElement(_nameXName, name));
+            product.Add(new XElement(_priceXName, price));
+            product.Add(new XElement(_imageXName, imagePath));
 
             // Get xmlDB Instance
             var xmlDBInstance = DB.xmlDB.Instance;
 
             // Add the Element to the node
-            xmlDBInstance.doc.Element("products").Add(product);
+            xmlDBInstance.doc.Root.Element("products").Add(product);
 
             // Save
             xmlDBInstance.SaveChanges();
@@ -137,15 +146,16 @@ namespace GroceryPOS.Data.DAL
             // Get xmlDB Instance
             var xmlDBInstance = DB.xmlDB.Instance;
 
-            var items = xmlDBInstance.doc.Element("products").Elements("product").Where(i => (string)i.Element("ID") == id);
+            var items = xmlDBInstance.doc.Root.Element("products").Elements("product").Where(i => (string)i.Attribute(_idXName) == id);
 
+            // counter (Just for debugging)
             int count = items.Count();
 
+            // If has items
             if (count != 0)
             {
+                // Remove the items
                 items.Remove();
-
-
 
                 // Save
                 xmlDBInstance.SaveChanges();

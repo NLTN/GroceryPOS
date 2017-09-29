@@ -21,7 +21,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace GroceryPOS.Models
+namespace GroceryPOS.Data.Models
 {
     [XmlRoot("product")]
     public class Product
