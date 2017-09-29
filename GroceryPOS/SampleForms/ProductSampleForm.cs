@@ -21,10 +21,11 @@ namespace GroceryPOS.SampleForms
         }
         #endregion
 
-        #region Add a Product Group
+        #region Group Box - Add a Product 
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Save to database.
+            // ProductBLL.Add(productID, name, price, image path);
             ProductBLL.Add(txtProductID.Text, txtName.Text, (double)numPrice.Value, picBoxProductImage.Tag.ToString());
         }
 
@@ -34,15 +35,19 @@ namespace GroceryPOS.SampleForms
             OpenFileDialog dialog = new OpenFileDialog();
 
             // Show the dialog
-            if (dialog.ShowDialog() == DialogResult.OK) // If user selected a file
+            if (dialog.ShowDialog() == DialogResult.OK) // If the user selected a file
             {
-                // Show the image that user selected in the picture box
+                // Show the selected image in the picture box
                 picBoxProductImage.Image = Image.FromFile(dialog.FileName);
 
-                // Set the file path to the picturebox's tag for using later.
+                // Set the file path to the picturebox's tag because we will use it later.
                 picBoxProductImage.Tag = dialog.FileName;
             }
         }
+        #endregion
+
+        #region Group Box - Product List
+
         #endregion
     }
 }
