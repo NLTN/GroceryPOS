@@ -37,16 +37,17 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtProductName = new System.Windows.Forms.TextBox();
-            this.txtProductID = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.picPhoto = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.picPhoto = new System.Windows.Forms.PictureBox();
-            this.btnBrowse = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtProductID = new System.Windows.Forms.TextBox();
+            this.txtProductName = new System.Windows.Forms.TextBox();
             this.txtSearchBox = new System.Windows.Forms.TextBox();
+            this.btnProductSample = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.SuspendLayout();
@@ -135,39 +136,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "New Product";
             // 
-            // txtProductName
+            // btnBrowse
             // 
-            this.txtProductName.Location = new System.Drawing.Point(10, 75);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(232, 20);
-            this.txtProductName.TabIndex = 3;
-            this.txtProductName.Text = "Apple";
+            this.btnBrowse.Location = new System.Drawing.Point(129, 164);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(113, 23);
+            this.btnBrowse.TabIndex = 12;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
             // 
-            // txtProductID
+            // picPhoto
             // 
-            this.txtProductID.Location = new System.Drawing.Point(10, 36);
-            this.txtProductID.Name = "txtProductID";
-            this.txtProductID.Size = new System.Drawing.Size(100, 20);
-            this.txtProductID.TabIndex = 4;
-            this.txtProductID.Text = "FRUIT-002";
+            this.picPhoto.Location = new System.Drawing.Point(10, 115);
+            this.picPhoto.Name = "picPhoto";
+            this.picPhoto.Size = new System.Drawing.Size(113, 72);
+            this.picPhoto.TabIndex = 11;
+            this.picPhoto.TabStop = false;
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Product ID";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Name";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Picture";
             // 
             // label3
             // 
@@ -186,31 +179,39 @@
             this.txtPrice.TabIndex = 7;
             this.txtPrice.Text = "$20.00";
             // 
-            // label4
+            // label2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 98);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Picture";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Name";
             // 
-            // picPhoto
+            // label1
             // 
-            this.picPhoto.Location = new System.Drawing.Point(10, 115);
-            this.picPhoto.Name = "picPhoto";
-            this.picPhoto.Size = new System.Drawing.Size(113, 72);
-            this.picPhoto.TabIndex = 11;
-            this.picPhoto.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Product ID";
             // 
-            // btnBrowse
+            // txtProductID
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(129, 164);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(113, 23);
-            this.btnBrowse.TabIndex = 12;
-            this.btnBrowse.Text = "Browse";
-            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.txtProductID.Location = new System.Drawing.Point(10, 36);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.Size = new System.Drawing.Size(100, 20);
+            this.txtProductID.TabIndex = 4;
+            this.txtProductID.Text = "FRUIT-002";
+            // 
+            // txtProductName
+            // 
+            this.txtProductName.Location = new System.Drawing.Point(10, 75);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(232, 20);
+            this.txtProductName.TabIndex = 3;
+            this.txtProductName.Text = "Apple";
             // 
             // txtSearchBox
             // 
@@ -220,11 +221,22 @@
             this.txtSearchBox.TabIndex = 6;
             this.txtSearchBox.Text = "Apple";
             // 
+            // btnProductSample
+            // 
+            this.btnProductSample.Location = new System.Drawing.Point(531, 27);
+            this.btnProductSample.Name = "btnProductSample";
+            this.btnProductSample.Size = new System.Drawing.Size(137, 23);
+            this.btnProductSample.TabIndex = 7;
+            this.btnProductSample.Text = "Product Sample";
+            this.btnProductSample.UseVisualStyleBackColor = true;
+            this.btnProductSample.Click += new System.EventHandler(this.btnProductSample_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 490);
+            this.Controls.Add(this.btnProductSample);
             this.Controls.Add(this.txtSearchBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDelete);
@@ -261,6 +273,7 @@
         private System.Windows.Forms.TextBox txtProductID;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.TextBox txtSearchBox;
+        private System.Windows.Forms.Button btnProductSample;
     }
 }
 

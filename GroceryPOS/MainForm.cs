@@ -47,5 +47,10 @@ namespace GroceryPOS
         {
             ProductBLL.Delete("FRUIT-001");
         }
+
+        private void btnProductSample_Click(object sender, EventArgs e)
+        {
+            new SampleForms.ProductSampleForm().ShowDialog();
+        }
     }
 }

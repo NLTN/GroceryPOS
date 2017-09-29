@@ -84,6 +84,11 @@ namespace GroceryPOS.Data.BLL
         /// <param name="imgPath">Image path</param>
         public static void Add(string id, string name, double price, string imagePath)
         {
+            // Auto generate an ID if id is empty
+            if (id == string.Empty)
+            {
+                id = GenerateID();
+            }
             new DAL.ProductDAL().Add(id, name, price, imagePath);
         }
 
