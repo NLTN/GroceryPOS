@@ -28,7 +28,7 @@ namespace GroceryPOS.SampleForms
             }
         }
 
-        public string Name
+        public string NameOfProduct
         {
             get
             {
@@ -93,7 +93,7 @@ namespace GroceryPOS.SampleForms
             InitializeComponent();
 
             ID = id;
-            Name = name;
+            NameOfProduct = name;
             Price = price;
             ImagePath = imagePath;
         }

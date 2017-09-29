@@ -35,6 +35,7 @@ namespace GroceryPOS.SampleForms
             // Save to database.
             // ProductBLL.Add(productID, name, price, image path);
             ProductBLL.Add(txtProductID.Text, txtName.Text, (double)numPrice.Value, picBoxProductImage.Tag.ToString());
+            LoadData();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -61,8 +62,16 @@ namespace GroceryPOS.SampleForms
         #region Product List Methods
         void LoadData()
         {
-            ProductUserControl uc = new ProductUserControl("123", "Tomato", 2.55, "32131");
-            flpProducts.Controls.Add(uc);
+            // First, remove all controls in the flow layout panel.
+            flpProducts.Controls.Clear();
+
+            // Next, get all the products
+            foreach(var i in ProductBLL.GetProductsBySearchString(""))
+            {
+                // Create and add a product user control to the flow layout panel
+                flpProducts.Controls.Add(new ProductUserControl(i.ProductID, i.Name, i.Price, i.ImagePath));
+            }
+            
         }
         #endregion
     }
