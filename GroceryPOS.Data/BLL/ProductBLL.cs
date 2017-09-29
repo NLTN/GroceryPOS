@@ -21,6 +21,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 
 namespace GroceryPOS.Data.BLL
 {
@@ -29,6 +30,10 @@ namespace GroceryPOS.Data.BLL
     /// </summary>
     public class ProductBLL
     {
+        #region Private Fields
+        private static string DefaultImageDirectory = System.Environment.CurrentDirectory + "/Images";
+        #endregion
+
         #region Get
         /// <summary>
         /// <para>Get a product by ID</para>
@@ -84,12 +89,39 @@ namespace GroceryPOS.Data.BLL
         /// <param name="imgPath">Image path</param>
         public static void Add(string id, string name, double price, string imagePath)
         {
-            // Auto generate an ID if id is empty
-            if (id == string.Empty)
+            try
             {
-                id = GenerateID();
+                // Auto generate an ProductID if the id is empty
+                if (id == string.Empty)
+                {
+                    id = GenerateID();
+                }
+
+                // If the user want to add an image
+                if (imagePath != string.Empty)
+                {
+                    // Check if the file exists
+                    if (File.Exists(imagePath))
+                    {
+                        // Create an image directory if needed.
+                        if (!Directory.Exists(DefaultImageDirectory))
+                        {
+                            Directory.CreateDirectory(DefaultImageDirectory);
+                        }
+
+                        // Copy the file user selected to DefaultImageDirectory
+                        File.Copy(imagePath, DefaultImageDirectory + "/" + Path.GetFileName(imagePath));
+                    }
+                }
+
+                // Execute
+                new DAL.ProductDAL().Add(id, name, price, Path.GetFileName(imagePath));
             }
-            new DAL.ProductDAL().Add(id, name, price, imagePath);
+            catch (Exception e)
+            {
+                // Debug Output
+                Debug.WriteLine(e.Message);
+            }
         }
 
         /// <summary>
@@ -104,7 +136,8 @@ namespace GroceryPOS.Data.BLL
         #endregion
 
         #region Others
-        public static string GenerateID() {
+        public static string GenerateID()
+        {
             return DateTime.UtcNow.ToBinary().ToString();
         }
         #endregion
