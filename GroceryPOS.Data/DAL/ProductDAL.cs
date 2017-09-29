@@ -65,7 +65,7 @@ namespace GroceryPOS.Data.DAL
                                                     ProductID = i.Attribute(_idXName).Value,
                                                     Name = i.Element(_nameXName).Value,
                                                     Price = Double.Parse(i.Element(_priceXName).Value),
-                                                    ImagePath = i.Element(_imageXName).Value
+                                                    ImagePath = Settings.StorageDirectory + "/" + i.Element(_imageXName).Value
                                                 };
             // Debug
             Debug.WriteLine("Number of items found: {0}", items.Count());
@@ -93,7 +93,7 @@ namespace GroceryPOS.Data.DAL
                                                     ProductID = i.Attribute(_idXName).Value,
                                                     Name = i.Element(_nameXName).Value,
                                                     Price = Double.Parse(i.Element(_priceXName).Value),
-                                                    ImagePath = i.Element(_imageXName).Value
+                                                    ImagePath = Settings.StorageDirectory + "/" + i.Element(_imageXName).Value
                                                 };
 
             // Debug
