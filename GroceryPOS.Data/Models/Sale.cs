@@ -27,7 +27,8 @@ namespace GroceryPOS.Data.Models
         public string SaleID { get; set; }
         public DateTime Datetime { get; set; }
         public double Tax { get; set; }
+        public decimal Total { get; set; }
 
-        public List<SaleItem> SaleItems = new List<SaleItem>();
+        public IEnumerable<SaleItem> SaleItems = new List<SaleItem>();
     }   
 }
