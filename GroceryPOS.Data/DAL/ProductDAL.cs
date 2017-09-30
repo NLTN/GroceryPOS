@@ -52,26 +52,24 @@ namespace GroceryPOS.Data.DAL
         /// </summary>
         /// <param name="id">Product ID</param>
         /// <returns>A list of product, type of <Models.Product></returns>
-        public IEnumerable<Models.Product> GetProductByID(string id)
+        public Models.Product GetProductByID(string id)
         {
             // Get xmlDB Instance
             var xmlDBInstance = DB.xmlDB.Instance;
 
             // Query
-            IEnumerable<Models.Product> items = from i in xmlDBInstance.doc.Root.Element("products").Elements("product")
-                                                where (string)i.Element("ID") == id
+            Models.Product item = (from i in xmlDBInstance.doc.Root.Element("products").Elements("product")
+                                                where (string)i.Attribute("id") == id
                                                 select new Models.Product()
                                                 {
                                                     ProductID = i.Attribute(_idXName).Value,
                                                     Name = i.Element(_nameXName).Value,
                                                     Price = Double.Parse(i.Element(_priceXName).Value),
                                                     ImagePath = Settings.StorageDirectory + "/" + i.Element(_imageXName).Value
-                                                };
-            // Debug
-            Debug.WriteLine("Number of items found: {0}", items.Count());
+                                                }).Single();
 
             // Return
-            return items;
+            return item;
         }
 
         /// <summary>

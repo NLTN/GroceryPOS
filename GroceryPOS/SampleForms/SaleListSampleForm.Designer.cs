@@ -95,6 +95,7 @@
             this.Controls.Add(this.label5);
             this.Name = "SaleListSampleForm";
             this.Text = "SaleListSampleForm";
+            this.Load += new System.EventHandler(this.SaleListSampleForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

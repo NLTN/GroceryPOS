@@ -24,7 +24,8 @@ using System.Xml.Linq;
 using System.Data;
 using System.Diagnostics;
 
-namespace GroceryPOS.Data.DAL {
+namespace GroceryPOS.Data.DAL
+{
     /// <summary>
     /// Order Data Access Layer
     /// </summary>
@@ -38,13 +39,16 @@ namespace GroceryPOS.Data.DAL {
         const string _itemXName = "item";
         const string _productIDXName = "productID";
         const string _idXName = "id";
+        const string _datetimeXName = "datetime";
+        const string _taxXName = "Tax";
         const string _priceXName = "price";
         const string _quantityXName = "quantity";
         const string _sortorderXName = "sortorder";
         #endregion
 
         #region Add/Edit/Delete Methods
-        public void Delete(string id) {
+        public void Delete(string id)
+        {
             // Get xmlDB Instance
             var xmlDBInstance = DB.xmlDB.Instance;
 
@@ -66,8 +70,10 @@ namespace GroceryPOS.Data.DAL {
             // Debug
             Debug.WriteLine("Number of items deleted: {0}", count);
         }
-        public bool Add(Models.Sale newSale) {
-            try {
+        public bool Add(Models.Sale newSale)
+        {
+            try
+            {
                 // Create a new Element
                 XElement element = new XElement(_saleNodeXName);
 
@@ -75,36 +81,37 @@ namespace GroceryPOS.Data.DAL {
                 element.SetAttributeValue(_idXName, newSale.SaleID);
 
                 // Create a datetime element.
-                element.Add(new XElement("datetime", newSale.Datetime.ToString()));
+                element.Add(new XElement(_datetimeXName, newSale.Datetime.ToString()));
 
                 // Create a Tax element
-                element.Add(new XElement("Tax", newSale.Tax));
+                element.Add(new XElement(_taxXName, newSale.Tax));
 
                 // Create a SaleItems Node
                 XElement items = new XElement(_saleItemsXName);
 
-                foreach(var i in newSale.SaleItems) {
+                foreach (var i in newSale.SaleItems)
+                {
                     // Create an item element
                     XElement item = new XElement(_itemXName);
 
                     // Product ID
                     item.Add(new XElement(_productIDXName, i.ProductID));
-                    
+
                     // Sort Order
                     item.Add(new XElement(_sortorderXName, i.SortOrder));
-                    
+
                     // Quantity
                     item.Add(new XElement(_quantityXName, i.Quantity));
-                    
+
                     // Price
                     item.Add(new XElement(_priceXName, i.Price));
 
                     // Add the item to items
                     items.Add(item);
                 }
-                
+
                 // Add Items to Sale Element
-                element.Add(items);            
+                element.Add(items);
 
                 // Get xmlDB Instance
                 var xmlDBInstance = DB.xmlDB.Instance;
@@ -116,15 +123,46 @@ namespace GroceryPOS.Data.DAL {
                 xmlDBInstance.SaveChanges();
 
                 return true;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 // Debug. Write error message
                 Debug.WriteLine(e.Message);
 
                 // Return False because there is an Error
-                return false; 
+                return false;
             }
-            
+
         }
+        #endregion
+
+        #region Get
+        public IEnumerable<Models.Sale> GetAllSales()
+        {
+            // Get xmlDB Instance
+            var xmlDBInstance = DB.xmlDB.Instance;
+            
+            // Query
+            IEnumerable<Models.Sale> sales = from i in xmlDBInstance.doc.Root.Element(_saleRootXName).Elements(_saleNodeXName)
+                                             select new Models.Sale()
+                                             {
+                                                 SaleID = i.Attribute(_idXName).Value,
+                                                 Datetime = DateTime.Parse(i.Element(_datetimeXName).Value),
+                                                 Tax = double.Parse(i.Element(_taxXName).Value),
+                                                 SaleItems = from item in i.Element(_saleItemsXName).Elements(_itemXName)
+                                                             select new Models.SaleItem()
+                                                             {
+                                                                 ProductID = item.Element(_productIDXName).Value,
+                                                                 SortOrder = int.Parse(item.Element(_sortorderXName).Value),
+                                                                 Quantity = double.Parse(item.Element(_quantityXName).Value),
+                                                                 Price = decimal.Parse(item.Element(_priceXName).Value),
+                                                                 ProductName = BLL.ProductBLL.GetProductByID(item.Element(_productIDXName).Value).Name
+                                                             }
+                                                };
+
+            return sales;
+        }
+
         #endregion
     }
 }

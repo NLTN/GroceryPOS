@@ -37,7 +37,7 @@ namespace GroceryPOS.Data.BLL
         /// </summary>
         /// <param name="id">Product ID</param>
         /// <returns>A list of product, type of <Models.Product></returns>
-        public static IEnumerable<Models.Product> GetProductByID(string ID)
+        public static Models.Product GetProductByID(string ID)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace GroceryPOS.Data.BLL
                 // Debug
                 Debug.WriteLine("{0} Exception caught.", e);
 
-                return new Models.Product[0];
+                return new Models.Product();
             }
         }
 
