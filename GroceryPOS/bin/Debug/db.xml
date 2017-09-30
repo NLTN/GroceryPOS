@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <products>
+    <product id="5248109233064978848">
+      <name>Orange</name>
+      <price>2.5</price>
+      <image>five-spice-apple-pie5248109233064988868.jpg</image>
+    </product>
+    <product id="5248109234118852106">
+      <name>Tomato</name>
+      <price>2.5</price>
+      <image>Organictomato1-1020x765.jpg</image>
+    </product>
+    <product id="5248109269495099984">
+      <name>Strawberry</name>
+      <price>1.5</price>
+      <image>Strawberry1-1020x765.jpg</image>
+    </product>
+    <product id="5248109271124951083">
+      <name>Orange</name>
+      <price>0.5</price>
+      <image>orange1.jpg</image>
+    </product>
+    <product id="5248109273574882291">
+      <name>Green Pear</name>
+      <price>4.25</price>
+      <image>pears.jpg</image>
+    </product>
+    <product id="5248109512358239686">
+      <name>Starbucks Mocha</name>
+      <price>1</price>
+      <image>Starbucks-Mocha-Frappuccino.jpg</image>
+    </product>
+  </products>
+  <sales>
+    <sale id="5248109396848585160">
+      <datetime>9/29/2017 8:10:42 PM</datetime>
+      <Tax>0.09</Tax>
+      <items>
+        <item>
+          <productID>5248109269495099984</productID>
+          <sortorder>0</sortorder>
+          <quantity>1</quantity>
+          <price>1.50</price>
+        </item>
+        <item>
+          <productID>5248109234118852106</productID>
+          <sortorder>1</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+      </items>
+    </sale>
+    <sale id="5248109398601708115">
+      <datetime>9/29/2017 8:13:37 PM</datetime>
+      <Tax>0.09</Tax>
+      <items>
+        <item>
+          <productID>5248109234118852106</productID>
+          <sortorder>0</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+        <item>
+          <productID>5248109269495099984</productID>
+          <sortorder>1</sortorder>
+          <quantity>1</quantity>
+          <price>1.50</price>
+        </item>
+      </items>
+    </sale>
+    <sale id="5248109429172385487">
+      <datetime>9/29/2017 9:04:34 PM</datetime>
+      <Tax>0.09</Tax>
+      <items>
+        <item>
+          <productID>5248109269495099984</productID>
+          <sortorder>0</sortorder>
+          <quantity>1</quantity>
+          <price>1.50</price>
+        </item>
+        <item>
+          <productID>5248109234118852106</productID>
+          <sortorder>1</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+      </items>
+    </sale>
+    <sale id="5248109434463595675">
+      <datetime>9/29/2017 9:13:23 PM</datetime>
+      <Tax>0.09</Tax>
+      <items>
+        <item>
+          <productID>5248109234118852106</productID>
+          <sortorder>0</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+        <item>
+          <productID>5248109233064978848</productID>
+          <sortorder>1</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+        <item>
+          <productID>5248109271124951083</productID>
+          <sortorder>2</sortorder>
+          <quantity>1</quantity>
+          <price>0.50</price>
+        </item>
+        <item>
+          <productID>5248109273574882291</productID>
+          <sortorder>3</sortorder>
+          <quantity>1</quantity>
+          <price>4.25</price>
+        </item>
+        <item>
+          <productID>5248109234118852106</productID>
+          <sortorder>4</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+        <item>
+          <productID>5248109269495099984</productID>
+          <sortorder>5</sortorder>
+          <quantity>1</quantity>
+          <price>1.50</price>
+        </item>
+      </items>
+    </sale>
+    <sale id="5248109503899923316">
+      <datetime>9/29/2017 11:09:07 PM</datetime>
+      <Tax>0.09</Tax>
+      <items>
+        <item>
+          <productID>5248109269495099984</productID>
+          <sortorder>0</sortorder>
+          <quantity>1</quantity>
+          <price>1.50</price>
+        </item>
+        <item>
+          <productID>5248109269495099984</productID>
+          <sortorder>1</sortorder>
+          <quantity>1</quantity>
+          <price>1.50</price>
+        </item>
+      </items>
+    </sale>
+    <sale id="5248109504961474122">
+      <datetime>9/29/2017 11:10:53 PM</datetime>
+      <Tax>0.09</Tax>
+      <items>
+        <item>
+          <productID>5248109273574882291</productID>
+          <sortorder>0</sortorder>
+          <quantity>1</quantity>
+          <price>4.25</price>
+        </item>
+        <item>
+          <productID>5248109271124951083</productID>
+          <sortorder>1</sortorder>
+          <quantity>1</quantity>
+          <price>0.50</price>
+        </item>
+        <item>
+          <productID>5248109233064978848</productID>
+          <sortorder>2</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+      </items>
+    </sale>
+    <sale id="5248109509852221042">
+      <datetime>9/29/2017 11:19:02 PM</datetime>
+      <Tax>0.09</Tax>
+      <items>
+        <item>
+          <productID>5248109234118852106</productID>
+          <sortorder>0</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+        <item>
+          <productID>5248109269495099984</productID>
+          <sortorder>1</sortorder>
+          <quantity>1</quantity>
+          <price>1.50</price>
+        </item>
+        <item>
+          <productID>5248109234118852106</productID>
+          <sortorder>2</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+        <item>
+          <productID>5248109233064978848</productID>
+          <sortorder>3</sortorder>
+          <quantity>1</quantity>
+          <price>2.50</price>
+        </item>
+      </items>
+    </sale>
+  </sales>
+</root>
