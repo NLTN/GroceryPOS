@@ -113,7 +113,20 @@ namespace GroceryPOS.SampleForms
             var puc = (ProductUserControl)((Control)sender).Parent;
 
             // Add product to the order
-            AddProductToOrder(puc.ID, puc.NameOfProduct, 1, puc.Price);
+            // AddProductToOrder(puc.ID, puc.NameOfProduct, 1, puc.Price);
+
+            // Create a Form instance
+            var popup = new ProductInformationPopupForm(puc.ID, puc.NameOfProduct, puc.Price, puc.ImagePath);
+
+            // Set the starting position of the form
+            popup.StartPosition = FormStartPosition.CenterParent;
+
+            // Detect if the form closes
+            if (popup.ShowDialog() == DialogResult.OK)
+            {
+                // Add product to the order
+                AddProductToOrder(puc.ID, puc.NameOfProduct, popup.Quantity, puc.Price);
+            }
         }
 
         #endregion

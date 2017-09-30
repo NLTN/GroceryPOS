@@ -53,6 +53,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleForms\ProductInformationPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SampleForms\ProductInformationPopupForm.Designer.cs">
+      <DependentUpon>ProductInformationPopupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SampleForms\ProductSampleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SampleForms\ProductInformationPopupForm.resx">
+      <DependentUpon>ProductInformationPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SampleForms\ProductSampleForm.resx">
       <DependentUpon>ProductSampleForm.cs</DependentUpon>
     </EmbeddedResource>
