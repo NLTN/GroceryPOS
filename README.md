@@ -11,7 +11,5 @@ CRN          :   26637
 Project name :   Grocery POS
 
 Group members:   Brendan Carpio, Youlim Kim,
-
                  Christian Ayala, Ben Nguyen,
-                 
                  Nguyen Nguyen
