@@ -49,7 +49,10 @@ namespace GroceryPOS.SampleForms
         private void btnDecreaseQuantity_Click(object sender, EventArgs e)
         {
             // Decrease the Quantity by 1
-            Quantity--;
+            if (Quantity > 1)
+            {
+                Quantity--;
+            }             
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
