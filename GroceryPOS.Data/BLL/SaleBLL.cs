@@ -61,6 +61,26 @@ namespace GroceryPOS.Data.BLL {
         }
         #endregion
         #region Get Methods
+        public static IEnumerable<Models.Sale> GetAllSales()
+        {
+            return new DAL.SaleDAL().GetAllSales();
+        }
+
+        public static Models.Sale GetSaleByID(string id)
+        {
+            try
+            {
+                return new DAL.SaleDAL().GetSaleByID(id);
+            }
+            catch (Exception e)
+            {
+                // Debug
+                Debug.WriteLine("{0} Exception caught.", e);
+
+                return new Models.Sale();
+            }
+        }
+
         public static IEnumerable<Models.Sale> GetSalesByDatetime(DateTime from, DateTime to) {
             return new Models.Sale[1];
         }
