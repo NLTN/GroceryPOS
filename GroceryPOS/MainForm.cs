@@ -34,7 +34,7 @@ namespace GroceryPOS
 
         private void btnCreateASale_Click(object sender, EventArgs e)
         {
-            new SampleForms.SaleSampleForm().ShowDialog();
+            new SampleForms.CreateEditSaleSampleForm().ShowDialog();
         }
     }
 }

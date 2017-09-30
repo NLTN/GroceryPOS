@@ -65,11 +65,11 @@
     <Compile Include="SampleForms\ProductUserControl.Designer.cs">
       <DependentUpon>ProductUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="SampleForms\SaleSampleForm.cs">
+    <Compile Include="SampleForms\CreateEditSaleSampleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SampleForms\SaleSampleForm.Designer.cs">
-      <DependentUpon>SaleSampleForm.cs</DependentUpon>
+    <Compile Include="SampleForms\CreateEditSaleSampleForm.Designer.cs">
+      <DependentUpon>CreateEditSaleSampleForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -90,8 +90,8 @@
     <EmbeddedResource Include="SampleForms\ProductUserControl.resx">
       <DependentUpon>ProductUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SampleForms\SaleSampleForm.resx">
-      <DependentUpon>SaleSampleForm.cs</DependentUpon>
+    <EmbeddedResource Include="SampleForms\CreateEditSaleSampleForm.resx">
+      <DependentUpon>CreateEditSaleSampleForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\GroceryPOS.BLL.Product.datasource" />
     <None Include="Properties\Settings.settings">
