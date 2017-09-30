@@ -35,6 +35,11 @@ namespace GroceryPOS.SampleForms
             // Save to database.
             // ProductBLL.Add(productID, name, price, image path);
             ProductBLL.Add(txtProductID.Text, txtName.Text, (double)numPrice.Value, picBoxProductImage.Tag.ToString());
+
+            // Clear the search text
+            txtSearch.Text = string.Empty;
+
+            // Load data from DB
             LoadData();
         }
 
@@ -66,13 +71,31 @@ namespace GroceryPOS.SampleForms
             flpProducts.Controls.Clear();
 
             // Next, get all the products
-            foreach(var i in ProductBLL.GetProductsBySearchString(""))
+            foreach (var i in ProductBLL.GetProductsBySearchString(txtSearch.Text))
             {
                 // Create and add a product user control to the flow layout panel
                 flpProducts.Controls.Add(new ProductUserControl(i.ProductID, i.Name, i.Price, i.ImagePath));
             }
-            
+
         }
         #endregion
+
+        #region Group Box - Product List
+        // Search products when enter key pressed
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Detect Enter Key pressed
+            if (e.KeyChar == (char)13) // The number 13 means Keys.Enter
+            {
+                LoadData();
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+        #endregion
+
     }
 }

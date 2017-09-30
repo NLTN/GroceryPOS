@@ -65,6 +65,12 @@
     <Compile Include="SampleForms\ProductUserControl.Designer.cs">
       <DependentUpon>ProductUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="SampleForms\SaleSampleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SampleForms\SaleSampleForm.Designer.cs">
+      <DependentUpon>SaleSampleForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
