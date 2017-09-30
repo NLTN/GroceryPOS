@@ -141,7 +141,7 @@ namespace GroceryPOS.Data.DAL
         {
             // Get xmlDB Instance
             var xmlDBInstance = DB.xmlDB.Instance;
-            
+
             // Query
             IEnumerable<Models.Sale> sales = from i in xmlDBInstance.doc.Root.Element(_saleRootXName).Elements(_saleNodeXName)
                                              select new Models.Sale()
@@ -157,10 +157,52 @@ namespace GroceryPOS.Data.DAL
                                                                  Quantity = double.Parse(item.Element(_quantityXName).Value),
                                                                  Price = decimal.Parse(item.Element(_priceXName).Value),
                                                                  ProductName = BLL.ProductBLL.GetProductByID(item.Element(_productIDXName).Value).Name
-                                                             }
-                                                };
+                                                             },
+                                                 Total = (from item in i.Element(_saleItemsXName).Elements(_itemXName)
+                                                          select new Models.SaleItem()
+                                                          {
+                                                              ProductID = item.Element(_productIDXName).Value,
+                                                              SortOrder = int.Parse(item.Element(_sortorderXName).Value),
+                                                              Quantity = double.Parse(item.Element(_quantityXName).Value),
+                                                              Price = decimal.Parse(item.Element(_priceXName).Value),
+                                                              ProductName = BLL.ProductBLL.GetProductByID(item.Element(_productIDXName).Value).Name
+                                                          }).Select(c => c.Price * (decimal)c.Quantity * (1 + decimal.Parse(i.Element(_taxXName).Value))).Sum()
+
+
+                                             };
 
             return sales;
+        }
+
+        public Models.Sale GetSaleByID(string id)
+        {
+            // Get xmlDB Instance
+            var xmlDBInstance = DB.xmlDB.Instance;
+
+            // Query
+            Models.Sale sale = (from i in xmlDBInstance.doc.Root.Element(_saleRootXName).Elements(_saleNodeXName)
+                                where (string)i.Attribute("id") == id
+                                select new Models.Sale()
+                                {
+                                    SaleID = i.Attribute(_idXName).Value,
+                                    Datetime = DateTime.Parse(i.Element(_datetimeXName).Value),
+                                    Tax = double.Parse(i.Element(_taxXName).Value),
+                                    SaleItems = from item in i.Element(_saleItemsXName).Elements(_itemXName)
+                                                select new Models.SaleItem()
+                                                {
+                                                    ProductID = item.Element(_productIDXName).Value,
+                                                    SortOrder = int.Parse(item.Element(_sortorderXName).Value),
+                                                    Quantity = double.Parse(item.Element(_quantityXName).Value),
+                                                    Price = decimal.Parse(item.Element(_priceXName).Value),
+                                                    ProductName = BLL.ProductBLL.GetProductByID(item.Element(_productIDXName).Value).Name
+                                                },
+                                }).Single();
+
+            // Sum
+            sale.Total = sale.SaleItems.Select(i => i.Price * (decimal)i.Quantity * (decimal)(1 + sale.Tax)).Sum();
+
+            // Return
+            return sale;
         }
 
         #endregion
