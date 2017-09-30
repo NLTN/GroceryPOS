@@ -90,6 +90,9 @@
     <EmbeddedResource Include="SampleForms\ProductUserControl.resx">
       <DependentUpon>ProductUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SampleForms\SaleSampleForm.resx">
+      <DependentUpon>SaleSampleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\GroceryPOS.BLL.Product.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
