@@ -174,7 +174,9 @@ namespace GroceryPOS.SampleForms
             SaleBLL.Add(ListOfSaleItems, _Tax);
 
             // Reset the form
-            btnReset.PerformClick();
+            //btnReset.PerformClick();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
         #endregion
 

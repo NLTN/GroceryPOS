@@ -43,7 +43,7 @@
             this.lblTax = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.btnSaveAndClose = new System.Windows.Forms.Button();
             this.lvOrder = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -132,7 +132,7 @@
             this.groupBox1.Controls.Add(this.lblTax);
             this.groupBox1.Controls.Add(this.lblTotal);
             this.groupBox1.Controls.Add(this.btnReset);
-            this.groupBox1.Controls.Add(this.btnCheckOut);
+            this.groupBox1.Controls.Add(this.btnSaveAndClose);
             this.groupBox1.Controls.Add(this.lvOrder);
             this.groupBox1.Location = new System.Drawing.Point(603, 52);
             this.groupBox1.Name = "groupBox1";
@@ -216,7 +216,7 @@
             // btnReset
             // 
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReset.Location = new System.Drawing.Point(198, 438);
+            this.btnReset.Location = new System.Drawing.Point(139, 438);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(78, 23);
             this.btnReset.TabIndex = 2;
@@ -224,16 +224,16 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // btnCheckOut
+            // btnSaveAndClose
             // 
-            this.btnCheckOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCheckOut.Location = new System.Drawing.Point(282, 438);
-            this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(78, 23);
-            this.btnCheckOut.TabIndex = 1;
-            this.btnCheckOut.Text = "Check out";
-            this.btnCheckOut.UseVisualStyleBackColor = true;
-            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
+            this.btnSaveAndClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveAndClose.Location = new System.Drawing.Point(230, 438);
+            this.btnSaveAndClose.Name = "btnSaveAndClose";
+            this.btnSaveAndClose.Size = new System.Drawing.Size(130, 23);
+            this.btnSaveAndClose.TabIndex = 1;
+            this.btnSaveAndClose.Text = "Save and Close";
+            this.btnSaveAndClose.UseVisualStyleBackColor = true;
+            this.btnSaveAndClose.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // lvOrder
             // 
@@ -305,7 +305,7 @@
         private System.Windows.Forms.Label lblTax;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnCheckOut;
+        private System.Windows.Forms.Button btnSaveAndClose;
         private System.Windows.Forms.ListView lvOrder;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
