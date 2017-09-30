@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.btnProductSample = new System.Windows.Forms.Button();
-            this.btnCreateASale = new System.Windows.Forms.Button();
             this.btnSaleList = new System.Windows.Forms.Button();
+            this.btnCreateNewSale = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnProductSample
@@ -43,19 +43,9 @@
             this.btnProductSample.UseVisualStyleBackColor = true;
             this.btnProductSample.Click += new System.EventHandler(this.btnProductSample_Click);
             // 
-            // btnCreateASale
-            // 
-            this.btnCreateASale.Location = new System.Drawing.Point(260, 160);
-            this.btnCreateASale.Name = "btnCreateASale";
-            this.btnCreateASale.Size = new System.Drawing.Size(137, 23);
-            this.btnCreateASale.TabIndex = 8;
-            this.btnCreateASale.Text = "Create a Sale sample";
-            this.btnCreateASale.UseVisualStyleBackColor = true;
-            this.btnCreateASale.Click += new System.EventHandler(this.btnCreateASale_Click);
-            // 
             // btnSaleList
             // 
-            this.btnSaleList.Location = new System.Drawing.Point(260, 189);
+            this.btnSaleList.Location = new System.Drawing.Point(260, 160);
             this.btnSaleList.Name = "btnSaleList";
             this.btnSaleList.Size = new System.Drawing.Size(137, 23);
             this.btnSaleList.TabIndex = 9;
@@ -63,13 +53,23 @@
             this.btnSaleList.UseVisualStyleBackColor = true;
             this.btnSaleList.Click += new System.EventHandler(this.btnReceiptView_Click);
             // 
+            // btnCreateNewSale
+            // 
+            this.btnCreateNewSale.Location = new System.Drawing.Point(260, 189);
+            this.btnCreateNewSale.Name = "btnCreateNewSale";
+            this.btnCreateNewSale.Size = new System.Drawing.Size(137, 23);
+            this.btnCreateNewSale.TabIndex = 10;
+            this.btnCreateNewSale.Text = "Create a Sale";
+            this.btnCreateNewSale.UseVisualStyleBackColor = true;
+            this.btnCreateNewSale.Click += new System.EventHandler(this.btnCreateNewSale_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 490);
+            this.Controls.Add(this.btnCreateNewSale);
             this.Controls.Add(this.btnSaleList);
-            this.Controls.Add(this.btnCreateASale);
             this.Controls.Add(this.btnProductSample);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -80,8 +80,8 @@
 
         #endregion
         private System.Windows.Forms.Button btnProductSample;
-        private System.Windows.Forms.Button btnCreateASale;
         private System.Windows.Forms.Button btnSaleList;
+        private System.Windows.Forms.Button btnCreateNewSale;
     }
 }
 

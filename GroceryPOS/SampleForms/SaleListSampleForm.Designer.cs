@@ -236,9 +236,9 @@
             // btnCreateNewSale
             // 
             this.btnCreateNewSale.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnCreateNewSale.Location = new System.Drawing.Point(339, 22);
+            this.btnCreateNewSale.Location = new System.Drawing.Point(284, 12);
             this.btnCreateNewSale.Name = "btnCreateNewSale";
-            this.btnCreateNewSale.Size = new System.Drawing.Size(125, 23);
+            this.btnCreateNewSale.Size = new System.Drawing.Size(180, 36);
             this.btnCreateNewSale.TabIndex = 13;
             this.btnCreateNewSale.Text = "Create a Sale";
             this.btnCreateNewSale.UseVisualStyleBackColor = false;

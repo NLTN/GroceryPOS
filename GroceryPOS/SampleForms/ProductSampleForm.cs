@@ -51,11 +51,18 @@ namespace GroceryPOS.SampleForms
             // Show the dialog
             if (dialog.ShowDialog() == DialogResult.OK) // If the user selected a file
             {
-                // Show the selected image in the picture box
-                picBoxProductImage.Image = Image.FromFile(dialog.FileName);
+                try
+                {
+                    // Show the selected image in the picture box
+                    picBoxProductImage.Image = Image.FromFile(dialog.FileName);
 
-                // Set the file path to the picturebox's tag because we will use it later.
-                picBoxProductImage.Tag = dialog.FileName;
+                    // Set the file path to the picturebox's tag because we will use it later.
+                    picBoxProductImage.Tag = dialog.FileName;
+                } catch (Exception error)
+                {
+                    Console.WriteLine(error.Message);
+                }
+                 
             }
         }
         #endregion

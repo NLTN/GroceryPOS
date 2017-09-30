@@ -31,15 +31,15 @@ namespace GroceryPOS
         {
             new SampleForms.ProductSampleForm().ShowDialog();
         }
-
-        private void btnCreateASale_Click(object sender, EventArgs e)
-        {
-            new SampleForms.CreateEditSaleSampleForm().ShowDialog();
-        }
-
+        
         private void btnReceiptView_Click(object sender, EventArgs e)
         {
             new SampleForms.SaleListSampleForm().ShowDialog();
+        }
+
+        private void btnCreateNewSale_Click(object sender, EventArgs e)
+        {
+            new SampleForms.CreateEditSaleSampleForm().ShowDialog();
         }
     }
 }
