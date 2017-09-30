@@ -170,8 +170,11 @@ namespace GroceryPOS.SampleForms
                 ListOfSaleItems.Add(saleItem);                
             }
 
-            //
+            // Save to Database
             SaleBLL.Add(ListOfSaleItems, _Tax);
+
+            // Reset the form
+            btnReset.PerformClick();
         }
         #endregion
 
