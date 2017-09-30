@@ -245,7 +245,10 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
+            this.lvOrder.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lvOrder.FullRowSelect = true;
             this.lvOrder.Location = new System.Drawing.Point(6, 17);
+            this.lvOrder.MultiSelect = false;
             this.lvOrder.Name = "lvOrder";
             this.lvOrder.Size = new System.Drawing.Size(354, 317);
             this.lvOrder.TabIndex = 0;
