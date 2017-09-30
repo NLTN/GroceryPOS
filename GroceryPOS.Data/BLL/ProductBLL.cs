@@ -37,11 +37,11 @@ namespace GroceryPOS.Data.BLL
         /// </summary>
         /// <param name="id">Product ID</param>
         /// <returns>A list of product, type of <Models.Product></returns>
-        public static Models.Product GetProductByID(string ID)
+        public static Models.Product GetProductByID(string id)
         {
             try
             {
-                return new DAL.ProductDAL().GetProductByID(ID);
+                return new DAL.ProductDAL().GetProductByID(id);
             }
             catch (Exception e)
             {
