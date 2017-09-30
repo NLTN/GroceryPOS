@@ -20,17 +20,6 @@ namespace GroceryPOS.SampleForms
         }
         #endregion
 
-        #region Form Events
-        private void SaleListSampleForm_Load(object sender, EventArgs e)
-        {
-            LoadAllSales();
-
-            var b = SaleBLL.GetSaleByID("5248109396848585160");
-
-            Console.WriteLine(b.Total);
-        }
-        #endregion
-
         #region Methods
         private void LoadAllSales()
         {
@@ -40,14 +29,23 @@ namespace GroceryPOS.SampleForms
             // Get All Sales, and add them to the List View
             foreach (var s in SaleBLL.GetAllSales())
             {
+                // Create a list item
                 ListViewItem li = new ListViewItem(s.SaleID);
 
                 li.SubItems.Add(s.Datetime.ToString());
                 li.SubItems.Add(s.Total.ToString("C"));
+
+                // Add the list item to the ListView
                 lvSales.Items.Add(li);
             }
         }
         #endregion
+
+        #region Events
+        private void SaleListSampleForm_Load(object sender, EventArgs e)
+        {
+            LoadAllSales();
+        }
 
         private void lvSales_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -93,5 +91,6 @@ namespace GroceryPOS.SampleForms
                 LoadAllSales();
             }
         }
+        #endregion
     }
 }

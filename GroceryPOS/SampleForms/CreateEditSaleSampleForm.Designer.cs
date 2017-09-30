@@ -233,7 +233,7 @@
             this.btnSaveAndClose.TabIndex = 1;
             this.btnSaveAndClose.Text = "Save and Close";
             this.btnSaveAndClose.UseVisualStyleBackColor = true;
-            this.btnSaveAndClose.Click += new System.EventHandler(this.btnCheckOut_Click);
+            this.btnSaveAndClose.Click += new System.EventHandler(this.btnSaveAndClose_Click);
             // 
             // lvOrder
             // 

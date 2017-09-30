@@ -131,7 +131,7 @@ namespace GroceryPOS.SampleForms
             ShowSummary();
         }
 
-        private void btnCheckOut_Click(object sender, EventArgs e)
+        private void btnSaveAndClose_Click(object sender, EventArgs e)
         {
 
             if (lvOrder.Items.Count == 0)
