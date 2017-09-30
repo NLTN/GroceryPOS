@@ -36,5 +36,10 @@ namespace GroceryPOS
         {
             new SampleForms.CreateEditSaleSampleForm().ShowDialog();
         }
+
+        private void btnReceiptView_Click(object sender, EventArgs e)
+        {
+            new SampleForms.SaleListSampleForm().ShowDialog();
+        }
     }
 }

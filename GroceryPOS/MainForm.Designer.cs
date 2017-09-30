@@ -30,6 +30,7 @@
         {
             this.btnProductSample = new System.Windows.Forms.Button();
             this.btnCreateASale = new System.Windows.Forms.Button();
+            this.btnSaleList = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnProductSample
@@ -52,11 +53,22 @@
             this.btnCreateASale.UseVisualStyleBackColor = true;
             this.btnCreateASale.Click += new System.EventHandler(this.btnCreateASale_Click);
             // 
+            // btnSaleList
+            // 
+            this.btnSaleList.Location = new System.Drawing.Point(260, 189);
+            this.btnSaleList.Name = "btnSaleList";
+            this.btnSaleList.Size = new System.Drawing.Size(137, 23);
+            this.btnSaleList.TabIndex = 9;
+            this.btnSaleList.Text = "List of Sales";
+            this.btnSaleList.UseVisualStyleBackColor = true;
+            this.btnSaleList.Click += new System.EventHandler(this.btnReceiptView_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 490);
+            this.Controls.Add(this.btnSaleList);
             this.Controls.Add(this.btnCreateASale);
             this.Controls.Add(this.btnProductSample);
             this.Name = "MainForm";
@@ -69,6 +81,7 @@
         #endregion
         private System.Windows.Forms.Button btnProductSample;
         private System.Windows.Forms.Button btnCreateASale;
+        private System.Windows.Forms.Button btnSaleList;
     }
 }
 
