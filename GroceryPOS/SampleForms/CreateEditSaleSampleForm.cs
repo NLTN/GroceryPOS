@@ -25,6 +25,14 @@ namespace GroceryPOS.SampleForms
         }
         #endregion
 
+        #region Form Event
+        private void CreateEditSaleSampleForm_Load(object sender, EventArgs e)
+        {
+            LoadData();
+
+            ShowSummary();
+        }
+        #endregion
 
         #region Product List Methods
         void LoadData()
@@ -48,7 +56,7 @@ namespace GroceryPOS.SampleForms
                 // Add the user control to the Flow Layout Panel
                 flpProducts.Controls.Add(uc);
             }
-        }       
+        }
 
         private void AddProductToOrder(string productID, string name, double quantity, double price)
         {
@@ -58,8 +66,14 @@ namespace GroceryPOS.SampleForms
             // Display the total cost
             ShowSummary();
 
-            // Create a ListViewItem, and add it to the ListView
-            lvOrder.Items.Add(new ListViewItem(new string[] { name, quantity.ToString(), price.ToString("C"), (quantity * price).ToString("C") }));
+            // Create a ListViewItem
+            ListViewItem li = new ListViewItem(new string[] { name, quantity.ToString(), price.ToString("N2"), (quantity * price).ToString("C") });
+
+            // Save the product ID in the tag. We will use it later.
+            li.Tag = productID;
+
+            // Add ListViewItem to the ListView
+            lvOrder.Items.Add(li);
 
             //// If you don't understand the code above, please take a look at this:
             //// Create a ListViewItem
@@ -85,9 +99,9 @@ namespace GroceryPOS.SampleForms
             lblGrandTotal.Text = (_Total * (1 + _Tax)).ToString("C");
         }
         #endregion
-        
 
-        #region Group Box - Product List
+
+        #region Group Box 1 - Product List
         // Search products when enter key pressed
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -112,7 +126,51 @@ namespace GroceryPOS.SampleForms
             // Add product to the order
             AddProductToOrder(puc.ID, puc.NameOfProduct, 1, puc.Price);
         }
+
         #endregion
+
+        #region Group Box 2 - Order List
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            // Remove all items in the ListView
+            lvOrder.Items.Clear();
+
+            // Reset Total = 0
+            _Total = 0;
+
+            // Update the summary
+            ShowSummary();
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+
+            if (lvOrder.Items.Count == 0)
+            {
+                // If there is nothing in the list, the program will do nothing.
+                return;
+            }
+
+            // Create a List of _saleItems
+            var _saleItems = new List<Data.Models.SaleItem>();
+
+            // Get all items in the ListView
+            foreach (ListViewItem li in lvOrder.Items)
+            {
+                // Create a SaleItem.
+                var saleItem = new Data.Models.SaleItem();
+
+                saleItem.ProductID = li.Tag.ToString();
+                saleItem.SortOrder = li.Index;
+                saleItem.Quantity = double.Parse(li.SubItems[1].ToString());
+                //saleItem.Price = double.Parse(li.SubItems[2].ToString());
+
+                Console.WriteLine(double.Parse(li.SubItems[1].Text.ToString()));
+                //Console.WriteLine(li.SubItems[2].Text);
+            }
+        }
+        #endregion
+
 
     }
 }

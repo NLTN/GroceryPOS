@@ -222,6 +222,7 @@
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnCheckOut
             // 
@@ -232,6 +233,7 @@
             this.btnCheckOut.TabIndex = 1;
             this.btnCheckOut.Text = "Check out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // lvOrder
             // 
@@ -281,6 +283,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "CreateEditSaleSampleForm";
             this.Text = "CreateEditSaleSampleForm";
+            this.Load += new System.EventHandler(this.CreateEditSaleSampleForm_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
