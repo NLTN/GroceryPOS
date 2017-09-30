@@ -33,8 +33,8 @@ namespace GroceryPOS.SampleForms
             ShowSummary();
         }
         #endregion
-
-        #region Product List Methods
+       
+        #region Group Box 1 - Product List
         void LoadData()
         {
             // First, remove all controls in the flow layout panel.
@@ -60,36 +60,28 @@ namespace GroceryPOS.SampleForms
 
         private void AddProductToOrder(string productID, string name, double quantity, double price)
         {
-            // SUM
-            _Total += quantity * price;
-
-            // Display the total cost
-            ShowSummary();
-
             // Create a ListViewItem
-            ListViewItem li = new ListViewItem(new string[] { name, quantity.ToString(), price.ToString("N2"), (quantity * price).ToString("C") });
+            ListViewItem li = new ListViewItem(name);
 
             // Save the product ID in the tag. We will use it later.
             li.Tag = productID;
 
-            // Add ListViewItem to the ListView
+            // Calculate sub total
+            double subTotal = quantity * price;
+
+            // Increase _Total
+            _Total += subTotal;
+
+            // Add some text values to ListViewItem
+            li.SubItems.Add(quantity.ToString());
+            li.SubItems.Add(price.ToString("N2"));
+            li.SubItems.Add(subTotal.ToString("C"));
+
+            // Add the ListViewItem to ListView
             lvOrder.Items.Add(li);
 
-            //// If you don't understand the code above, please take a look at this:
-            //// Create a ListViewItem
-            //ListViewItem li = new ListViewItem();
-
-            //// Calculate sub total
-            //double subTotal = quantity * price;
-
-            //// Add some text values to ListViewItem
-            //li.SubItems.Add(name);
-            //li.SubItems.Add(quantity.ToString());
-            //li.SubItems.Add(price.ToString("C"));
-            //li.SubItems.Add(subTotal.ToString("C"));
-
-            //// Add the ListViewItem to ListView
-            //lvOrder.Items.Add(li);
+            // Display the total cost
+            ShowSummary();
         }
 
         private void ShowSummary()
@@ -98,10 +90,7 @@ namespace GroceryPOS.SampleForms
             lblTax.Text = (_Total * _Tax).ToString("C");
             lblGrandTotal.Text = (_Total * (1 + _Tax)).ToString("C");
         }
-        #endregion
 
-
-        #region Group Box 1 - Product List
         // Search products when enter key pressed
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -179,7 +168,5 @@ namespace GroceryPOS.SampleForms
             this.Close();
         }
         #endregion
-
-
     }
 }
