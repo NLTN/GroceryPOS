@@ -152,7 +152,7 @@ namespace GroceryPOS.SampleForms
             }
 
             // Create a List of _saleItems
-            var _saleItems = new List<Data.Models.SaleItem>();
+            var ListOfSaleItems = new List<Data.Models.SaleItem>();
 
             // Get all items in the ListView
             foreach (ListViewItem li in lvOrder.Items)
@@ -160,14 +160,18 @@ namespace GroceryPOS.SampleForms
                 // Create a SaleItem.
                 var saleItem = new Data.Models.SaleItem();
 
+                // Set values
                 saleItem.ProductID = li.Tag.ToString();
                 saleItem.SortOrder = li.Index;
-                saleItem.Quantity = double.Parse(li.SubItems[1].ToString());
-                //saleItem.Price = double.Parse(li.SubItems[2].ToString());
+                saleItem.Quantity = double.Parse(li.SubItems[1].Text.ToString());
+                saleItem.Price = decimal.Parse(li.SubItems[2].Text.ToString());
 
-                Console.WriteLine(double.Parse(li.SubItems[1].Text.ToString()));
-                //Console.WriteLine(li.SubItems[2].Text);
+                // Add the sale item to the ListOfSaleItems
+                ListOfSaleItems.Add(saleItem);                
             }
+
+            //
+            SaleBLL.Add(ListOfSaleItems, _Tax);
         }
         #endregion
 
