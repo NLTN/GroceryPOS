@@ -75,8 +75,11 @@ namespace GroceryPOS.Data.DAL {
                 element.SetAttributeValue(_idXName, newSale.SaleID);
 
                 // Create a datetime element.
-                element.Add(new XElement("datetime", newSale.Datetime.ToString()));            
-                
+                element.Add(new XElement("datetime", newSale.Datetime.ToString()));
+
+                // Create a Tax element
+                element.Add(new XElement("Tax", newSale.Tax));
+
                 // Create a SaleItems Node
                 XElement items = new XElement(_saleItemsXName);
 
