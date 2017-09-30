@@ -35,7 +35,7 @@ namespace GroceryPOS.Data.BLL {
             new DAL.SaleDAL().Delete(id);
         }
 
-        public static bool Add(List<Models.SaleItem> saleItems) {
+        public static bool Add(List<Models.SaleItem> saleItems, double Tax) {
             try {
                 // Create a new sale object
                 Models.Sale newSale = new Models.Sale();
@@ -43,6 +43,7 @@ namespace GroceryPOS.Data.BLL {
                 // Set Sale ID & Datetime
                 newSale.SaleID = GenerateID();
                 newSale.Datetime = DateTime.Now;
+                newSale.Tax = Tax;
 
                 // Set sale items
                 newSale.SaleItems = saleItems;
