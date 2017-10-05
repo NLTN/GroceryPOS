@@ -33,7 +33,11 @@ namespace GroceryPOS.SampleForms
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Save to database.
-            // ProductBLL.Add(productID, name, price, image path);
+            if (picBoxProductImage.Tag == null)
+            {
+                picBoxProductImage.Tag = string.Empty;
+            }
+
             ProductBLL.Add(txtProductID.Text, txtName.Text, (double)numPrice.Value, picBoxProductImage.Tag.ToString());
 
             // Clear the search text
