@@ -27,10 +27,13 @@ namespace GroceryPOS.Data.DB
     // Singleton xmlDB Class
     public sealed class xmlDB
     {
+        #region Event
+        public event EventHandler DataChanged;
+        #endregion
         #region singleton class
         private static volatile xmlDB instance;
         private static object syncRoot = new Object();
-        
+
         private xmlDB() { Reload(); }
 
         public static xmlDB Instance
@@ -50,12 +53,12 @@ namespace GroceryPOS.Data.DB
             }
         }
         #endregion
-        
+
         #region Public Fields
         public XDocument doc;
         public static string dbPath = Environment.CurrentDirectory + "/db.xml";
         #endregion
-        
+
         #region Public Methods
         /// <summary>
         /// Load XML file
@@ -63,11 +66,14 @@ namespace GroceryPOS.Data.DB
         public void Reload()
         {
             // Checking if DB file exists
-            if (!DBExists()) {
+            if (!DBExists())
+            {
                 // DB file doesn't exist.
                 // Create a new one.
                 CreateXmlFile();
-            } else {
+            }
+            else
+            {
                 // Print out DB Path
                 Console.WriteLine("DB path = " + dbPath);
 
@@ -83,18 +89,28 @@ namespace GroceryPOS.Data.DB
         {
             // Save
             doc.Save(dbPath);
+
+            // Raise an event.
+            if (DataChanged != null)
+            {
+                DataChanged(this, null);
+            }
         }
         #endregion
 
         #region Private Methods
-        private bool DBExists() {
-            try {
+        private bool DBExists()
+        {
+            try
+            {
                 // Debug Output
                 Debug.WriteLine("DB exists = {0}", System.IO.File.Exists(dbPath));
 
                 // Return True/False. It depends on if DB exists or not.
                 return System.IO.File.Exists(dbPath);
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 // Debug Output
                 Debug.WriteLine(e.Message);
 
@@ -102,12 +118,14 @@ namespace GroceryPOS.Data.DB
                 return false;
             }
         }
-        private bool CreateXmlFile() {
-            try {
+        private bool CreateXmlFile()
+        {
+            try
+            {
                 // Create an XML document and save to file
                 new XDocument(
-                    new XElement("root", 
-                        new XElement("products"), new XElement("sales")  
+                    new XElement("root",
+                        new XElement("products"), new XElement("sales")
                     )
                 )
                 .Save(dbPath);
@@ -117,7 +135,9 @@ namespace GroceryPOS.Data.DB
 
                 // Return success
                 return true;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 // Print out error
                 Debug.WriteLine(e.Message);
 
