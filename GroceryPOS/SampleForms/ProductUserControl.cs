@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using GroceryPOS.Data.BLL;
 
 namespace GroceryPOS.SampleForms
 {
@@ -96,6 +97,19 @@ namespace GroceryPOS.SampleForms
             NameOfProduct = name;
             Price = price;
             ImagePath = imagePath;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Show Confirmation Box
+            if (MessageBox.Show(string.Format("Are you sure to delete the product '{0}'?", ID), "Confirmation", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            {
+                // Delete the product record from DB
+                ProductBLL.Delete(ID);
+
+                // Reload the list view
+            }
+            
         }
     }
 }
