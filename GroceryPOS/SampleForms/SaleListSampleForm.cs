@@ -22,35 +22,32 @@ namespace GroceryPOS.SampleForms
         {
             InitializeComponent();
         }
-        #endregion
+        #endregion      
 
-        #region Methods
-        private void LoadAllSales()
-        {
-            // Remove all items in Sales ListView
-            lvSales.Items.Clear();
-
-            // Get All Sales, and add them to the List View
-            foreach (var s in SaleBLL.GetAllSales())
-            {
-                // Create a list item
-                ListViewItem li = new ListViewItem(s.SaleID);
-
-                li.SubItems.Add(s.Datetime.ToString());
-                li.SubItems.Add(s.Total.ToString("C"));
-
-                // Add the list item to the ListView
-                lvSales.Items.Add(li);
-            }
-        }
-        #endregion
-
-        #region Events
+        #region Form Event Handlers
         private void SaleListSampleForm_Load(object sender, EventArgs e)
         {
-            LoadAllSales();
+            LoadData();
+
+            // Register a Database Event Handler
+            Data.DB.xmlDB.Instance.DataChanged += DataChanged;
         }
 
+        private void SaleListSampleForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Unregister a Database Event Handler
+            Data.DB.xmlDB.Instance.DataChanged -= DataChanged;
+        }
+        #endregion
+
+        #region Database Event Handler
+        private void DataChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+        #endregion      
+
+        #region Other Event Handlers
         private void lvSales_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (((ListView)sender).SelectedItems.Count == 0)
@@ -95,10 +92,9 @@ namespace GroceryPOS.SampleForms
         {
             if (new SampleForms.CreateEditSaleSampleForm().ShowDialog() == DialogResult.OK)
             {
-                LoadAllSales();
+                LoadData();
             }
         }
-        #endregion
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -107,10 +103,29 @@ namespace GroceryPOS.SampleForms
             {
                 // Delete the sale record from DB.
                 SaleBLL.Delete(SelectedSaleID);
-
-                // Reload the list view
-                LoadAllSales();
             }
         }
+        #endregion
+
+        #region Methods
+        private void LoadData()
+        {
+            // Remove all items in Sales ListView
+            lvSales.Items.Clear();
+
+            // Get All Sales, and add them to the List View
+            foreach (var s in SaleBLL.GetAllSales())
+            {
+                // Create a list item
+                ListViewItem li = new ListViewItem(s.SaleID);
+
+                li.SubItems.Add(s.Datetime.ToString());
+                li.SubItems.Add(s.Total.ToString("C"));
+
+                // Add the list item to the ListView
+                lvSales.Items.Add(li);
+            }
+        }
+        #endregion
     }
 }

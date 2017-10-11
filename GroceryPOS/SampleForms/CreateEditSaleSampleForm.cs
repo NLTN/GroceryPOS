@@ -25,15 +25,31 @@ namespace GroceryPOS.SampleForms
         }
         #endregion
 
-        #region Form Event
+        #region Form Event Handlers
         private void CreateEditSaleSampleForm_Load(object sender, EventArgs e)
         {
             LoadData();
 
             ShowSummary();
+
+            // Register a Database Event Handler
+            Data.DB.xmlDB.Instance.DataChanged += DataChanged;
+        }
+
+        private void CreateEditSaleSampleForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Unregister a Database Event Handler
+            Data.DB.xmlDB.Instance.DataChanged -= DataChanged;
         }
         #endregion
-       
+
+        #region Database Event Handler
+        private void DataChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+        #endregion      
+
         #region Group Box 1 - Product List
         void LoadData()
         {
@@ -45,6 +61,9 @@ namespace GroceryPOS.SampleForms
             {
                 // Create a product user control
                 ProductUserControl uc = new ProductUserControl(i.ProductID, i.Name, i.Price, i.ImagePath);
+
+                // Hide the delete button.
+                uc.ShowDeleteButton = false;
 
                 // Add an Event handler for each controls in the product user control.
                 // This is a workaround. I will find a better way to deal with this problem later.
@@ -181,5 +200,6 @@ namespace GroceryPOS.SampleForms
             this.Close();
         }
         #endregion
+        
     }
 }

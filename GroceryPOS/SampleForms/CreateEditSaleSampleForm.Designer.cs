@@ -286,6 +286,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "CreateEditSaleSampleForm";
             this.Text = "CreateEditSaleSampleForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateEditSaleSampleForm_FormClosing);
             this.Load += new System.EventHandler(this.CreateEditSaleSampleForm_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

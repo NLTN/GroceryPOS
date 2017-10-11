@@ -268,6 +268,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ProductSampleForm";
             this.Text = "ProductSampleForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductSampleForm_FormClosing);
             this.Load += new System.EventHandler(this.ProductSampleForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

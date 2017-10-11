@@ -82,6 +82,20 @@ namespace GroceryPOS.SampleForms
                 }
             }
         }
+
+        // Show/Hide Delete Button
+        bool _ShowDeleteButton = true;
+        public bool ShowDeleteButton
+        {
+            get
+            {
+                return _ShowDeleteButton;
+            }
+            set
+            {
+                btnDelete.Visible = _ShowDeleteButton = value;
+            }
+        }
         #endregion
 
         public ProductUserControl()
@@ -97,6 +111,8 @@ namespace GroceryPOS.SampleForms
             NameOfProduct = name;
             Price = price;
             ImagePath = imagePath;
+
+            btnDelete.Visible = ShowDeleteButton;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

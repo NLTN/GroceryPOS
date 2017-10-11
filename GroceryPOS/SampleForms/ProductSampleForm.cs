@@ -26,7 +26,24 @@ namespace GroceryPOS.SampleForms
         {
             // Load Products from DB
             LoadData();
+
+            // Register a Database Event Handler
+            Data.DB.xmlDB.Instance.DataChanged += DataChanged;
         }
+
+        private void ProductSampleForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Unregister a Database Event Handler
+            Data.DB.xmlDB.Instance.DataChanged -= DataChanged;
+        }
+        #endregion
+
+        #region Database Event Handler
+        private void DataChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
         #endregion
 
         #region Group Box - Add a Product 
@@ -42,9 +59,6 @@ namespace GroceryPOS.SampleForms
 
             // Clear the search text
             txtSearch.Text = string.Empty;
-
-            // Load data from DB
-            LoadData();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -70,11 +84,7 @@ namespace GroceryPOS.SampleForms
             }
         }
         #endregion
-
-        #region Group Box - Product List
-
-        #endregion
-
+               
         #region Product List Methods
         void LoadData()
         {
@@ -108,5 +118,6 @@ namespace GroceryPOS.SampleForms
         }
         #endregion
 
+        
     }
 }
