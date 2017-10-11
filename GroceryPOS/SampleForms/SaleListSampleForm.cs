@@ -13,6 +13,10 @@ namespace GroceryPOS.SampleForms
 {
     public partial class SaleListSampleForm : Form
     {
+        #region Fields
+        string SelectedSaleID = "";
+        #endregion
+
         #region Constructor
         public SaleListSampleForm()
         {
@@ -54,10 +58,13 @@ namespace GroceryPOS.SampleForms
                 return;
             }
 
+            // Set selected sale ID.
+            SelectedSaleID = ((ListView)sender).SelectedItems[0].Text;
+
             // Remove all items in lvOrder
             lvOrder.Items.Clear();
 
-            var sale = SaleBLL.GetSaleByID(((ListView)sender).SelectedItems[0].Text);
+            var sale = SaleBLL.GetSaleByID(SelectedSaleID);
             Console.WriteLine(sale.SaleItems.Count());
 
             foreach (var i in sale.SaleItems)
@@ -92,5 +99,18 @@ namespace GroceryPOS.SampleForms
             }
         }
         #endregion
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Show Confirmation Box
+            if (MessageBox.Show(string.Format("Are you sure to delete '{0}'?", SelectedSaleID), "Confirmation", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            {
+                // Delete the sale record from DB.
+                SaleBLL.Delete(SelectedSaleID);
+
+                // Reload the list view
+                LoadAllSales();
+            }
+        }
     }
 }

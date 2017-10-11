@@ -48,6 +48,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCreateNewSale = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +71,8 @@
             this.columnHeader3});
             this.lvSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvSales.FullRowSelect = true;
+            this.lvSales.GridLines = true;
+            this.lvSales.HideSelection = false;
             this.lvSales.Location = new System.Drawing.Point(3, 16);
             this.lvSales.MultiSelect = false;
             this.lvSales.Name = "lvSales";
@@ -108,6 +111,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnDelete);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
@@ -244,6 +248,16 @@
             this.btnCreateNewSale.UseVisualStyleBackColor = false;
             this.btnCreateNewSale.Click += new System.EventHandler(this.btnCreateNewSale_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(258, 413);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(102, 23);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "Delete this Order";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // SaleListSampleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,5 +300,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Button btnCreateNewSale;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
